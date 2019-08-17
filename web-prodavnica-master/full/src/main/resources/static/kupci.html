@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" th:href="@{/profil.css}"/>
+</head>
+<body>
+
+
+<h1>Korisnici</h1>
+
+<br><br>
+<table id="employees">
+    <tr>
+        <th>Id</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>See more</th>
+    </tr>
+    <tr th:each="kupac : ${kupci}">
+        <td th:text="${kupac.id}"></td>
+        <td th:text="${kupac.ime}"></td>
+        <td th:text="${kupac.prezime}"></td>
+        <td><a th:href="${'/kupci/' + kupac.id}">View</a></td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

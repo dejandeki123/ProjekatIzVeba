@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logovanje</title>
+</head>
+<body>
+<form th:action="@{/save-login-admin}" th:object="${admin}" method="post">
+    <table>
+        <tr>
+            <td><label for="korisnicko">Korisnicko ime:</label></td>
+            <td><input id="korisnicko" type="text" th:field="*{korisnicko}"/></td>
+        </tr>
+
+        <tr>
+            <td><label for="lozinka">Lozinka:</label></td>
+            <td><input id="lozinka" type="password" th:field="*{lozinka}"/></td>
+        </tr>
+
+        <tr><td><input type="submit"></td></tr>
+    </table>
+</form>
+</body>
+</html>

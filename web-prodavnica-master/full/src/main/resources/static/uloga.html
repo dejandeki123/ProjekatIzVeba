@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uloga</title>
+</head>
+<body>
+    <p>Ulogujte se kao:</p>
+    <a th:href="${'/add-kupac'}">
+    <table>
+        <tr><td><a th:href="${'/login'}">Kupac</a></td></tr>
+        <tr><td>Dostavljac</td></tr>
+        <tr><td><a th:href="${'/loginadmina'}">Admin</a></td></tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PrvaTackaApplication<PrvaTacka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.PrvaTacka.PrvaTackaApplication",
+            "projectName": "PrvaTacka",
+            "args": ""
+        }
+    ]
+}

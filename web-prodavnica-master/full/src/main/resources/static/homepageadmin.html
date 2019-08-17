@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/home.css}"/>
+</head>
+
+<body>
+<ul class="navbar">
+    <li class="nav"><a href="#">Moja korpa</a></li>
+    <li class="nav"><a href="#">Omiljeni proizvodi</a></li>
+    <li class="nav"><a href = "#"> Kontakt </a></li>
+    <li class="nav"><a href = "#"> O nama </a></li>
+    <li class="nav dropdown">
+        <a> Kategorije </a>
+        <div class="dropdown-hidden">
+            <a href="#"> Beletristika </a>
+            <a href="#"> Strucna literatura </a>
+            <a href="#"> Poezija </a>
+        </div>
+    </li>
+    <li id="logo"><a href="#"> knjige.org </a></li>
+</ul>
+
+<button onclick="location.href = '/kupci'">Vidi sve korisnike</button>
+
+
+</body>
+</html>

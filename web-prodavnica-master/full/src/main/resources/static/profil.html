@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+</head>
+<body>
+    <h2 style="text-align:center">Moj profil</h2>
+    <div class="card">
+        <img alt="User" src="/img/user.png"/>
+        <li class="nav"><a th:href="${'/profil/' + kupac.id}">Profil</a></li>
+        <h1 th:text="${kupac.ime}"></h1>
+        <h1 th:text="${kupac.prezime}"></h1>
+        <p class="title" th:text="${kupac.kontakt_telefon}"></p>
+
+        <br>
+    </div>
+    <a id="employeeDisplayLink" th:href="${'/kupci'}" style="text-align: center;">Back</a>
+
+</body>
+</html>
