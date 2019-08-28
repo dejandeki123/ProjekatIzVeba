@@ -14,7 +14,7 @@ public class KorisnikDTO {
     private String adresa;
 
     public KorisnikDTO() {
-        //konstruktor bez parametara
+        
     }
 
     public KorisnikDTO(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontakt_telefon,String email,String adresa) {

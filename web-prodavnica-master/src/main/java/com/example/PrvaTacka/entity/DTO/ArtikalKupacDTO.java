@@ -3,9 +3,9 @@ package com.example.PrvaTacka.entity.DTO;
 import com.example.PrvaTacka.entity.Status;
 
 public class ArtikalKupacDTO {
-    private Long idArtikla; ///ove stvari nam trebaju pri kupovini artikala
+    private Long idArtikla; 
     private Long idKupca; 
-    private Status status; //da znamo da li je porudzbina isporucena ili nije
+    private Status status;
 
     public Long getIdArtikla() {
         return idArtikla;

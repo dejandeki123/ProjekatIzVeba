@@ -24,7 +24,7 @@ public class Dostavljac extends Korisnik{
 
     public Dostavljac(Korpa porudzbina) {
         this.porudzbina=porudzbina;
-    } //konstruktor sa parametrima
+    } 
 
     public Dostavljac(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa,Korpa porudzbina) {
         super(id, korisnickoIme, lozinka, ime, prezime, uloga, kontaktTelefon, email, adresa);

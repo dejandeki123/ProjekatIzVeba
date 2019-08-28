@@ -4,7 +4,7 @@ import com.example.PrvaTacka.entity.Korpa;
 import com.example.PrvaTacka.entity.Uloga;
 
 public class DostavljacDTO {
-    private Long id; //id dostavljaca
+    private Long id;
     private String korisnickoIme;
     private String lozinka;
     private String ime;
@@ -16,7 +16,7 @@ public class DostavljacDTO {
     private Korpa porudzbina;
 
     public DostavljacDTO() {
-        //prazan konstruktor
+        
     }
 
     public DostavljacDTO(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontakt_telefon,String email,String adresa) {

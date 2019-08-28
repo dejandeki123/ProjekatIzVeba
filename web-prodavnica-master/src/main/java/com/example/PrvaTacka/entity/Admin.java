@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("admin") //rekli smo da ovo stavljamo jer 3 tipa korisnika
+@DiscriminatorValue("admin") 
 public class Admin extends Korisnik {
     
 }

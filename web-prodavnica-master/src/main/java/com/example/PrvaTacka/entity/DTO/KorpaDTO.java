@@ -10,16 +10,14 @@ import com.example.PrvaTacka.entity.Kupac;
 import com.example.PrvaTacka.entity.Status;
 
 public class KorpaDTO{
-   public Long id; //valjda id korisnika
-   private LocalDateTime datum_kupovine; //treba nam datum  kupovine zbog izvestaja
-   private Status status; ///treba nam status neke porudzbine
+   public Long id;
+   private LocalDateTime datum_kupovine; 
+   private Status status; 
    public Dostavljac dostavljac;
 
-   private Kupac kupac; ///treba nam kupac koji ce da stavlja proizvode u korpu
-
+   private Kupac kupac; 
    private Set<Artikal> artikli=new HashSet<>();
-   //skup artikala koje korisnik ubaci u korpu
-
+  
    public KorpaDTO(Long id,LocalDateTime datum_kupovine,Status status,Dostavljac dostavljac,Kupac kupac,Set<Artikal> artikli) {
        this.id=id;
        this.datum_kupovine=datum_kupovine;
@@ -27,7 +25,7 @@ public class KorpaDTO{
        this.dostavljac=dostavljac;
        this.kupac=kupac;
        this.artikli=artikli;
-   }//konstruktor sa parametrima sa skupom artikala u korpi
+   }
 
    public KorpaDTO(Long id,LocalDateTime datum_kupovine,Status status,Dostavljac dostavljac,Kupac kupac) {
     this.id=id;
@@ -35,8 +33,7 @@ public class KorpaDTO{
     this.status=status;
     this.dostavljac=dostavljac;
     this.kupac=kupac;
- //konstruktor sa parametrima za praznu korpu
-}
+   }
 
 public Kupac getKupac() {
     return kupac;

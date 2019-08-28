@@ -1,6 +1,6 @@
 package com.example.PrvaTacka.entity.DTO;
 
-public class ArtikalDTO{ //klasa koja sluzi za kreiranje objekta artikal
+public class ArtikalDTO{
     private Long id; 
     private String naziv;
     private String opis;
@@ -14,7 +14,7 @@ public class ArtikalDTO{ //klasa koja sluzi za kreiranje objekta artikal
         this.cena=cena;
         this.kolicina=kolicina;
         this.kategorija=kategorija;
-    } //konstruktor sa parametrima bez id-ja
+    }
 
     public ArtikalDTO(Long id,String naziv,String opis,Long cena,Integer kolicina,String kategorija) {
         this.id=id;
@@ -23,10 +23,10 @@ public class ArtikalDTO{ //klasa koja sluzi za kreiranje objekta artikal
         this.cena=cena;
         this.kolicina=kolicina;
         this.kategorija=kategorija;
-    } //konstruktor sa parametrima sa id-jem
+    }
 
     public ArtikalDTO() {
-        //konstruktor bez parametara
+       
     }
 
     public String getNaziv() {

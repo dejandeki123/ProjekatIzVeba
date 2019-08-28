@@ -16,7 +16,7 @@ public class Artikal implements Serializable {
   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;//svaki artikal ima svoj id
+    private Long id;
 
     @Column
     private String naziv;
@@ -33,19 +33,19 @@ public class Artikal implements Serializable {
     @Column 
     private String kategorija;
 
-    @ManyToMany //set prethodnih kupaca
+    @ManyToMany 
     private Set<Kupac> prethodni_kupci=new HashSet<>();
 
 
-    @ManyToMany //set omiljenih kupaca
+    @ManyToMany 
     private Set<Kupac> omiljeni_kupci=new HashSet<>();
 
-    @ManyToMany //set artikala u korpi
+    @ManyToMany 
     private Set<Korpa> korpaArtikli= new HashSet<>();
 
     public Set<Korpa> getKorpaArtikli() {
         return korpaArtikli;
-    } ///kolekcija korpi i artikala u njima
+    } 
 
     public void setKorpaArtikli(Set<Korpa> korpaArtikli) {
         this.korpaArtikli=korpaArtikli;
@@ -61,7 +61,7 @@ public class Artikal implements Serializable {
         this.cena=cena;
         this.kolicina=kolicina;
         this.kategorija=kategorija;
-    }//konstruktor sa parametrima bez id-ja
+    }
 
     public Artikal(Long id,String naziv,String opis,Long cena,Integer kolicina,String kategorija) {
         this.id=id;
@@ -70,7 +70,7 @@ public class Artikal implements Serializable {
         this.cena=cena;
         this.kolicina=kolicina;
         this.kategorija=kategorija;
-    } //konstruktor sa parametrima sa id-jem
+    } 
 
 
     public Long getId() {

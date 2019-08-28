@@ -6,44 +6,33 @@ import java.util.Set;
 import com.example.PrvaTacka.entity.Artikal;
 import com.example.PrvaTacka.entity.Korpa;
 
-
 public interface ArtikalService {
 
-    //metoda koja sluzi da kreiramo novi artikal,i vraca povratnu informaciju ako je doslo do greske
-    Artikal create(Artikal artikal) throws Exception;
+     Artikal kreirajArtikal(Artikal artikal) throws Exception;
+     
+     List<Artikal> findAll();
 
-    List<Artikal> findAll(); //pronadji sve artikle u prodavnici
+     Artikal unaprediArtikal(Artikal artikal) throws Exception;
 
-    //izmeni neki artikal
-    Artikal update(Artikal artikal) throws Exception;
-    
-    //izbrisi artikal po id-ju
-    void delete(Long id);
+     List<Artikal> sortByNaziv();
 
-    //pronadji sve artikle sa zadatom kategorijom
-    List<Artikal> findByKategorija(String kategorija);
-    
-    //izlistaj listu artikala sa zadatim parametrima
-    List<Artikal> filter(String naziv,String opis,Long cena,Integer kolicina,String kategorija);
+     List<Artikal> sortByCenaAsc();
 
-    //pronadji sve artikle po nazivu
-    List<Artikal> f(String naziv);
+     List<Artikal> sortByCenaDesc();
 
-    //pronadji artikal po id-ju
-    Artikal findOne(Long id);
+     void izbrisiArtikal(Long id);
 
-    //sortiraj po nazivu artikle
-    List<Artikal> sortByNaziv();
+     List<Artikal> findByKategorija(String kategorija);
 
-    //sortiraj od jeftinijeg ka skupljem
-    List<Artikal> sortByCenaAsc();
+     List<Artikal> izlistajArtiklePoKriterijumu(String naziv,String opis,Long cena,Integer kolicina,String kategorija);
 
-    //sortiraj od najskupljeg ka jefitinijem
-    List<Artikal> sortByCenaDesc();
+     List<Artikal> izlistajPoNazivu(String naziv);
+ 
+     Set<Artikal> findByKorpa(Set<Korpa> korpe);
 
-    //izlistaj omiljene artikle medju datim
-    List<Artikal> omiljeni(List<Artikal> artikli);
+     Artikal findOne(Long id);
 
-    //izlistaj sve artikle koji se nalaze u prosledjenim korpama
-    Set<Artikal> findByKorpa(Set<Korpa> korpe);
+     List<Artikal> omiljeni(List<Artikal> listaArtikala);
+
+
 }

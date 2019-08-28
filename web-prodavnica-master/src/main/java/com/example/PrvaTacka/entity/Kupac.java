@@ -7,26 +7,24 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity //oznaka za entitet
-@DiscriminatorValue("kupac") //diskriminator value se koristi da odvoji razlicite tipove korisnika:kupac,dostavljac,admin
+@Entity 
+@DiscriminatorValue("kupac")
 public class Kupac extends Korisnik{
 
-    @ManyToMany ///vrsta nasledjivanja;svako moze biti kupac
+    @ManyToMany 
     @JoinTable(name= "prethodni",
     joinColumns = @JoinColumn(name="kupac_id",referencedColumnName = "id"),
     inverseJoinColumns= @JoinColumn(name = "artikal_id",referencedColumnName ="id"))
-    //join table je tabela koja povezuje dve zavisne tabele
-    //joinColumns i inverseJoinColumns je nesto sto treba da se definise kod JoinTable
+  
 
-   private Set<Artikal> prethodni= new HashSet<>(); //set artikala koji oznacavaju korpu 
-   //korpa,ovo se valjda odnosi na prethodno ubacene artikle u korpu
+   private Set<Artikal> prethodni= new HashSet<>();
+ 
 
    @JsonIgnore
    @OneToOne(fetch = FetchType.LAZY)
@@ -38,18 +36,14 @@ public class Kupac extends Korisnik{
    joinColumns = @JoinColumn(name= "kupac_id", referencedColumnName="id"),
    inverseJoinColumns = @JoinColumn(name="artikal_id",referencedColumnName ="id" ))
 private Set<Artikal> omiljeni= new HashSet<>();
-//skup omiljenih artikala
+
 
 public Kupac(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa,Korpa korpaKupac) {
     super(id, korisnickoIme, lozinka, ime, prezime, uloga, kontaktTelefon, email, adresa);
     this.korpaKupac=korpaKupac;
-} //konstruktor ove klase;posto ova
-//klasa nasledjuje klasu Korisnik,pozivamo
-//roditeljski konstruktor,a za polje
-//korpaKupac koristimo standardni nacin
+} 
 
 private Long poen= Long.valueOf(0);
-//ovo sy valjda oni poeni pri kupovini
 
 public Long getPoen() {
     return poen;
@@ -85,16 +79,16 @@ public void setOmiljeni(Set<Artikal> omiljeni) {
 
 public Kupac(String korisnicko, String lozinka, String ime, String prezime, Uloga uloga, String kontakt_telefon, String email, String adresa) {
     super(korisnicko, lozinka, ime, prezime, uloga, kontakt_telefon, email, adresa);
-}//konstruktor za ovu klasu,bez id polja i korpe
+}
 
 public Kupac(Long id, String korisnicko, String lozinka, String ime, String prezime, Uloga uloga, String kontakt_telefon, String email, String adresa) {
     super(korisnicko, lozinka, ime, prezime, uloga, kontakt_telefon, email, adresa);
-}//konstruktor za ovu klasu,sa id -jem ali bez korpe
+}
 
 public Kupac(String korisnicko, String lozinka, String ime, String prezime, Uloga uloga, String kontakt_telefon, String email, String adresa, Korpa korpaKupac) {
     super(korisnicko, lozinka, ime, prezime, uloga, kontakt_telefon, email, adresa);
     this.korpaKupac = korpaKupac;
-}//konstruktor za ovu klasu,bez id-ja ali sa korpom
+}
 
 public Kupac() {
 

@@ -5,10 +5,10 @@ public class ArtikalKategorijaDTO {
 
     public ArtikalKategorijaDTO(String kategorija) {
         this.kategorija=kategorija;
-    }//konstruktor sa parametrima
+    }
 
     public ArtikalKategorijaDTO() {
-        //prazan konstruktor
+        
     }
 
     public String getKategorija() {

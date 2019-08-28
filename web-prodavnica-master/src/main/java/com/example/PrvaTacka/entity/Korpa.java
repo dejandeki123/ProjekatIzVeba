@@ -22,21 +22,21 @@ public class Korpa implements Serializable{//serijalizacija je predstava objekta
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //koristimo drugu liniju koda da npr kada koristimo mysql,kada hocemo da definisemo povecavanje polja id,pa hocemo da ukljucimo auto inkrement
+  
 
     @Column
     private LocalDateTime datum_kupovine;
 
     @Column
-    private Status status; //status neke kupovine 
+    private Status status; 
 
     @OneToOne(mappedBy = "porudzbina",fetch= FetchType.LAZY, cascade=CascadeType.ALL)
     private Dostavljac dostavljac;
-    //dostavljac za ovu prodavnicu
+  
 
     @OneToOne(mappedBy = "korpaKupac",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Kupac kupac;
-    //imamo i kupca koji stavlja artikle u korpu
+   
 
 
     @ManyToMany
@@ -44,12 +44,12 @@ public class Korpa implements Serializable{//serijalizacija je predstava objekta
     joinColumns = @JoinColumn(name="korpa_id",referencedColumnName ="id" ),
     inverseJoinColumns = @JoinColumn(name="artikal_id",referencedColumnName ="id" ))
     private Set<Artikal> artikli= new HashSet<>();
-   //ovo su dostupni artikli u prodavnici
+   
 
 
    public void DodajArtikal(Artikal artikal) {
        this.artikli.add(artikal);
-   }//dodavanje novog artikla na listu artikala u prodavnici
+   }
 
    public Dostavljac getDostavljac() {
        return dostavljac;
@@ -107,10 +107,10 @@ public class Korpa implements Serializable{//serijalizacija je predstava objekta
       this.dostavljac=dostavljac;
       this.kupac=kupac;
       this.artikli=artikli;
-  }//konstruktor sa parametrima
+  }
 
   public Korpa() {
-      //prazan konstruktor
+    
   }
   @Override
     public String toString() {

@@ -2,10 +2,10 @@ package com.example.PrvaTacka.entity.DTO;
 
 public class KupacDTO {
     
-    private Long id;//svaki kupac ima svoj id
-    private String korisnicko; //korisnicko ime
-    private String lozinka; //i lozinku
-    private String ime; //i slede njegovi ostali podaci
+    private Long id;
+    private String korisnicko;
+    private String lozinka;
+    private String ime; 
     private String prezime;
     private String uloga;
     private Integer kontakt_telefon;
@@ -16,7 +16,6 @@ public class KupacDTO {
     public KupacDTO(){
     }
 
-    //geteri i seteri
     public Long getId() {
         return id;
     }
@@ -99,6 +98,6 @@ public class KupacDTO {
         this.kontakt_telefon = kontakt_telefon;
         this.email = email;
         this.adresa = adresa;
-    }//konstruktor sa parametrima za kupca
+    }
 
 }

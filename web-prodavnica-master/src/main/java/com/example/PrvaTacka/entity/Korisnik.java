@@ -16,14 +16,13 @@ import javax.persistence.InheritanceType;
 @DiscriminatorColumn(name = "tip")
 public class Korisnik implements Serializable{
     public Korisnik() {
-        //konstruktor bez parametara
+       
     } 
 
     
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id; ///id korisnika
-
+     private Long id;
      @Column
      private String korisnickoIme; 
 
@@ -72,7 +71,7 @@ public class Korisnik implements Serializable{
     }
     
 
-     //geteri i seteri za polja u klasi Korisnik
+    
      public Long getId() {
          return id;
      }

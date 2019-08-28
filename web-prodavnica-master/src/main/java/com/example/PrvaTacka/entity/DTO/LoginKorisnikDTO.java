@@ -1,7 +1,7 @@
 package com.example.PrvaTacka.entity.DTO;
 
 public class LoginKorisnikDTO{
-    //klasa koja sluzi za logovanje registrovanog korisnika
+  
 
     private String korisnickoIme;
     private String lozinka;
