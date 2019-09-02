@@ -1,48 +1,56 @@
-package com.example.PrvaTacka.entity.DTO;
+package com.example.PrvaTacka.dto;
 
 import com.example.PrvaTacka.entity.Uloga;
 
 public class KorisnikDTO {
-    private Long id;
+
+    private Integer id;
+
     private String korisnickoIme;
+
     private String lozinka;
+
     private String ime;
+
     private String prezime;
+
     private Uloga uloga;
+
     private String kontaktTelefon;
+
     private String email;
+
     private String adresa;
 
     public KorisnikDTO() {
-        
     }
 
-    public KorisnikDTO(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontakt_telefon,String email,String adresa) {
-        this.id=id;
-        this.korisnickoIme=korisnickoIme;
-        this.lozinka=lozinka;
-        this.ime=ime;
-        this.prezime=prezime;
-        this.uloga=uloga;
-        this.kontaktTelefon=kontakt_telefon;
-        this.email=email;
-        this.adresa=adresa;
+    public KorisnikDTO(Integer id, String korisnickoIme, String lozinka, String ime, String prezime, Uloga uloga, String kontaktTelefon, String email, String adresa) {
+        this.id = id;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.uloga = uloga;
+        this.kontaktTelefon = kontaktTelefon;
+        this.email = email;
+        this.adresa = adresa;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getKorisnicko() {
+    public String getKorisnickoIme() {
         return korisnickoIme;
     }
 
-    public void setKorisnicko(String korisnicko) {
-        this.korisnickoIme = korisnicko;
+    public void setKorisnickoIme(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
     }
 
     public String getLozinka() {
@@ -77,12 +85,12 @@ public class KorisnikDTO {
         this.uloga = uloga;
     }
 
-    public String getKontakt_telefon() {
+    public String getKontaktTelefon() {
         return kontaktTelefon;
     }
 
-    public void setKontakt_telefon(String kontakt_telefon) {
-        this.kontaktTelefon = kontakt_telefon;
+    public void setKontaktTelefon(String kontaktTelefon) {
+        this.kontaktTelefon = kontaktTelefon;
     }
 
     public String getEmail() {
@@ -100,5 +108,4 @@ public class KorisnikDTO {
     public void setAdresa(String adresa) {
         this.adresa = adresa;
     }
-    
 }

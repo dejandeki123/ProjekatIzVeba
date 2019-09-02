@@ -1,45 +1,41 @@
 package com.example.PrvaTacka.entity;
 
-import javax.persistence.DiscriminatorValue;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import com.example.PrvaTacka.entity.Korisnik;
 
 @Entity
-@DiscriminatorValue("dostavljac")
-public class Dostavljac extends Korisnik{
+public class Dostavljac extends Korisnik {
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval=true) 
+    @JoinColumn(name="dostavljac_id")
+    private List<Korpa> korpe= new ArrayList<>();
+    
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "korpa_d_id")
-    private Korpa porudzbina;
+    public Dostavljac() {
 
-    public Korpa getPorudzbina() {
-        return porudzbina;
     }
 
-    public void setPorudzbina(Korpa porudzbina) {
-        this.porudzbina=porudzbina;
-    }
-
-    public Dostavljac(Korpa porudzbina) {
-        this.porudzbina=porudzbina;
-    } 
-
-    public Dostavljac(Long id,String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa,Korpa porudzbina) {
-        super(id, korisnickoIme, lozinka, ime, prezime, uloga, kontaktTelefon, email, adresa);
-        this.porudzbina=porudzbina;
-    }
-
-    public Dostavljac(String korisnicko, String lozinka, String ime, String prezime, Uloga uloga, String kontakt_telefon, String email, String adresa, Korpa porudzbina) {
-        super(korisnicko, lozinka, ime, prezime, uloga, kontakt_telefon, email, adresa);
-        this.porudzbina = porudzbina;
+    public Dostavljac(String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa,boolean izbrisano) {
+        super(korisnickoIme, lozinka, ime, prezime, uloga, kontaktTelefon, email, adresa, izbrisano);
     }
     
-    public Dostavljac() {
+    public List<Korpa> getKorpe() {
+        return korpe;
+    } 
+
+    public void setKorpe(List<Korpa> korpe) {
+        this.korpe=korpe;
     }
 
-    public Dostavljac(String korisnicko, String lozinka, String ime, String prezime, Uloga uloga, String kontakt_telefon, String email, String adresa) {
-        super(korisnicko, lozinka, ime, prezime, uloga, kontakt_telefon, email, adresa);
+    @Override
+    public String toString() {
+        return "Dostavljac{" +
+                "korpe=" + korpe +
+                '}';
     }
 }

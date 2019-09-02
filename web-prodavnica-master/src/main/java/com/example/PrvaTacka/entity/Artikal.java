@@ -1,22 +1,15 @@
 package com.example.PrvaTacka.entity;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
-public class Artikal implements Serializable {
-  
-    @Id
+public class Artikal{
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    private Integer id;
 
     @Column
     private String naziv;
@@ -24,60 +17,50 @@ public class Artikal implements Serializable {
     @Column
     private String opis;
 
-    @Column 
-    private Long cena;
+    @Column
+    private double cena;
 
-    @Column 
-    private Integer kolicina;
+    @Column
+    private int kolicina;
 
-    @Column 
-    private String kategorija;
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Kategorija kategorija;
 
-    @ManyToMany 
-    private Set<Kupac> prethodni_kupci=new HashSet<>();
+    @Column
+    private boolean snizeno;
 
+    
 
-    @ManyToMany 
-    private Set<Kupac> omiljeni_kupci=new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id")
+    private List<Artikal> omiljeniArtikli = new ArrayList<>();
 
-    @ManyToMany 
-    private Set<Korpa> korpaArtikli= new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id")
+    private List<Artikal> artikliUKorpi = new ArrayList<>();
 
-    public Set<Korpa> getKorpaArtikli() {
-        return korpaArtikli;
-    } 
-
-    public void setKorpaArtikli(Set<Korpa> korpaArtikli) {
-        this.korpaArtikli=korpaArtikli;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id")
+    private List<Artikal> kupljeno = new ArrayList<>();
 
     public Artikal() {
-
     }
 
-    public Artikal(String naziv,String opis,Long cena,Integer kolicina,String kategorija) {
-        this.naziv=naziv;
-        this.opis=opis;
-        this.cena=cena;
-        this.kolicina=kolicina;
-        this.kategorija=kategorija;
+    public Artikal(String naziv, String opis, double cena, int kolicina, Kategorija kategorija, boolean snizeno) {
+        this.naziv = naziv;
+        this.opis = opis;
+        this.cena = cena;
+        this.kolicina = kolicina;
+        this.kategorija = kategorija;
+        this.snizeno = snizeno;
     }
 
-    public Artikal(Long id,String naziv,String opis,Long cena,Integer kolicina,String kategorija) {
-        this.id=id;
-        this.naziv=naziv;
-        this.opis=opis;
-        this.cena=cena;
-        this.kolicina=kolicina;
-        this.kategorija=kategorija;
-    } 
-
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -97,58 +80,75 @@ public class Artikal implements Serializable {
         this.opis = opis;
     }
 
-    public Long getCena() {
+    public double getCena() {
         return cena;
     }
 
-    public void setCena(Long cena) {
+    public void setCena(double cena) {
         this.cena = cena;
     }
 
-    public Integer getKolicina() {
+    public int getKolicina() {
         return kolicina;
     }
 
-    public void setKolicina(Integer kolicina) {
+    public void setKolicina(int kolicina) {
         this.kolicina = kolicina;
     }
 
-    public String getKategorija() {
+    public Kategorija getKategorija() {
         return kategorija;
     }
 
-    public void setKategorija(String kategorija) {
+    public void setKategorija(Kategorija kategorija) {
         this.kategorija = kategorija;
     }
 
-    public Set<Kupac> getPrethodniKupci() {
-        return prethodni_kupci;
+    public List<Artikal> getOmiljeni() {
+        return omiljeniArtikli;
     }
 
-    public void setPrethodniKupci(Set<Kupac> prethodni_kupci) {
-        this.prethodni_kupci=prethodni_kupci;
+    public void setOmiljeni(List<Artikal> omiljeni) {
+        this.omiljeniArtikli = omiljeni;
     }
 
-    public Set<Kupac> getOmiljeniKupci() {
-        return omiljeni_kupci;
+    public List<Artikal> getArtikliUKorpi() {
+        return artikliUKorpi;
     }
 
-    public void setOmiljeniKupci(Set<Kupac> omiljeniKupci) {
-        this.omiljeni_kupci=omiljeniKupci;
+    public void setArtikliUKorpi(List<Artikal> artikliUK) {
+        this.artikliUKorpi = artikliUK;
+    }
+
+    public List<Artikal> getKupljene() {
+        return kupljeno;
+    }
+
+    public void setKupljene(List<Artikal> kupljeno) {
+        this.kupljeno = kupljeno;
+    }
+
+    public boolean isSnizeno() {
+        return snizeno;
+    }
+
+    public void setSnizeno(boolean snizeno) {
+        this.snizeno = snizeno;
     }
 
     @Override
     public String toString() {
-        return "Artikal { " +
-                "id = " + id +
-                ", naziv = '" + naziv + '\'' +
-                ", opis = '" + opis + '\'' +
-                ", cena = " + cena +
-                ", kolicina = " + kolicina +
-                ", kategorija = '" + kategorija + '\'' +
+        return "Artikal{" +
+                "id=" + id +
+                ", naziv='" + naziv + '\'' +
+                ", opis='" + opis + '\'' +
+                ", cena=" + cena +
+                ", kolicina=" + kolicina +
+                ", kategorija=" + kategorija +
+                ", omiljeniArtikli=" + omiljeniArtikli +
+                ", artikli u korpi=" + artikliUKorpi +
+                ", kupljeno=" + kupljeno +
+                ", snizeno=" + snizeno +
                 '}';
     }
-
-
-
 }

@@ -1,132 +1,101 @@
 package com.example.PrvaTacka.entity;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
-public class Korpa implements Serializable{//serijalizacija je predstava objekta iz memorije u nizu bitova 
-    @Id 
+public class Korpa {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-  
+    @Id
+    private Integer id;
 
     @Column
-    private LocalDateTime datum_kupovine;
+    private LocalDate datum;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private StatusIsporuke status;
 
     @Column
-    private Status status; 
+    private Integer dostavljac_id;
 
-    @OneToOne(mappedBy = "porudzbina",fetch= FetchType.LAZY, cascade=CascadeType.ALL)
-    private Dostavljac dostavljac;
-  
+    @Column
+    private Integer kupac_id;
 
-    @OneToOne(mappedBy = "korpaKupac",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Kupac kupac;
-   
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cart_id")
+    private List<Artikal> kupljeniArtikli= new ArrayList<>();
 
-
-    @ManyToMany
-    @JoinTable(name= "artikli",
-    joinColumns = @JoinColumn(name="korpa_id",referencedColumnName ="id" ),
-    inverseJoinColumns = @JoinColumn(name="artikal_id",referencedColumnName ="id" ))
-    private Set<Artikal> artikli= new HashSet<>();
-   
-
-
-   public void DodajArtikal(Artikal artikal) {
-       this.artikli.add(artikal);
-   }
-
-   public Dostavljac getDostavljac() {
-       return dostavljac;
-   }
-
-   public void setDostavljac(Dostavljac dostavljac) {
-       this.dostavljac=dostavljac;
-   }
-
-   public Set<Artikal> getArtikli() {
-       return artikli;
-   }
-
-   public void setArtikli(Set<Artikal> artikli) {
-       this.artikli=artikli;
-   }
-
-   public Kupac getKupac() {
-       return kupac;
-   }
-
-   public void setKupac(Kupac kupac) {
-       this.kupac=kupac;
-   }
-
-   public Long getId() {
-       return id;
-   }
-
-   public void setId(Long id) {
-       this.id=id;
-   }
-    
-
-   public LocalDateTime getDatum_kupovine() {
-    return datum_kupovine;
-  }
-
-    public void setDatum_kupovine(LocalDateTime datum_kupovine) {
-    this.datum_kupovine = datum_kupovine;
-   }
-
-    public Status getStatus() {
-    return status;
-   }
-
-  public void setStatus(Status status) {
-    this.status = status;
-  }
-
-
-  public Korpa(LocalDateTime datum_kupovine,Status status,Dostavljac dostavljac,Kupac kupac,Set<Artikal> artikli) {
-      this.datum_kupovine=datum_kupovine;
-      this.status=status;
-      this.dostavljac=dostavljac;
-      this.kupac=kupac;
-      this.artikli=artikli;
-  }
-
-  public Korpa() {
-    
-  }
-  @Override
-    public String toString() {
-        return "Korpa { " +
-                "id = " + id +
-                ", datum kupovine = '" + datum_kupovine + '\'' +
-                ", kupac = " + kupac +
-                ", dostavljac = " + dostavljac +
-                ", status = '" + status + '\'' +
-                '}';
+    public Korpa() {
     }
 
+    public Korpa(LocalDate datum, StatusIsporuke status, Integer dostavljac_id, Integer kupac_id) {
+        this.datum = datum;
+        this.status = status;
+        this.dostavljac_id = dostavljac_id;
+        this.kupac_id = kupac_id;
+    }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public LocalDate getDatum() {
+        return datum;
+    }
 
+    public void setDatum(LocalDate datum) {
+        this.datum = datum;
+    }
 
-    
+    public StatusIsporuke getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusIsporuke status) {
+        this.status = status;
+    }
+
+    public Integer getDostavljac_id() {
+        return dostavljac_id;
+    }
+
+    public void setDostavljac_id(Integer dostavljac_id) {
+        this.dostavljac_id = dostavljac_id;
+    }
+
+    public Integer getKupac_id() {
+        return kupac_id;
+    }
+
+    public void setKupac_id(Integer kupac_id) {
+        this.kupac_id = kupac_id;
+    }
+
+    public List<Artikal> getKupljeno() {
+        return kupljeniArtikli;
+    }
+
+    public void setKupljeno(List<Artikal> kupljeno) {
+        this.kupljeniArtikli = kupljeno;
+    }
+
+    @Override
+    public String toString() {
+        return "Korpa{" +
+                "id=" + id +
+                ", datum=" + datum +
+                ", status=" + status +
+                ", dostavljac_id=" + dostavljac_id +
+                ", kupac_id=" + kupac_id +
+                ", kupljeno=" + kupljeniArtikli +
+                '}';
+    }
 }
