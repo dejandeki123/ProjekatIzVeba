@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Korisnik {
+public  class Korisnik {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -42,14 +42,13 @@ public abstract class Korisnik {
     @Column
     private String adresa;
 
-    @Column
-    private boolean daLiJeKorisnikIzbrisan;
+  
 
     public Korisnik() {
 
     }
 
-    public Korisnik(String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa,boolean daLiJeIzbrisan) {
+    public Korisnik(String korisnickoIme,String lozinka,String ime,String prezime,Uloga uloga,String kontaktTelefon,String email,String adresa) {
         this.korisnickoIme=korisnickoIme;
         this.lozinka=lozinka;
         this.ime=ime;
@@ -58,7 +57,7 @@ public abstract class Korisnik {
         this.kontaktTelefon=kontaktTelefon;
         this.email=email;
         this.adresa=adresa;
-        this.daLiJeKorisnikIzbrisan=daLiJeIzbrisan;
+       
 
     }
 
@@ -135,13 +134,7 @@ public abstract class Korisnik {
         this.adresa = adresa;
     }
 
-    public boolean isDaLiJeKorisnikIzbrisan() {
-        return daLiJeKorisnikIzbrisan;
-    }
 
-    public void setDaLiJeKorisnikIzbrisan(boolean izbrisan) {
-        this.daLiJeKorisnikIzbrisan = izbrisan;
-    }
 
 
 
